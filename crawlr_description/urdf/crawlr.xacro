@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="crawlr">
+    <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
+    <xacro:arg name="bus_config" default="$(find crawlr_canopen)/config/velocity/bus.yml" />
+    <xacro:arg name="master_config" default="$(find crawlr_canopen)/config/velocity/master.dcf" />
+    <xacro:arg name="can_interface_name" default="can0" />
+
+    <!-- Import rover_assembly urdf file -->
+    <xacro:include filename="$(find crawlr_description)/urdf/rover_assembly.urdf" />
+    <xacro:include filename="$(find crawlr_description)/urdf/crawlr_ros2_control.xacro" />
+
+    <!-- Call the control macro -->
+    <xacro:crawlr_ros2_control
+        name="rover_assembly"
+        bus_config="$(arg bus_config)"
+        master_config="$(arg master_config)"
+        can_interface_name="$(arg can_interface)"
+        master_bin=""
+        initial_positions_file="$(arg initial_positions_file)" />
+</robot>
+

@@ -1,0 +1,359 @@
+---
+options:
+  # dcf_path: "/home/crawlr/ws_test/src/crawlr_canopen/config/velocity"
+  dcf_path: "@BUS_CONFIG_PATH@"
+#  reload_dcf: true
+
+master:
+  node_id: 100
+  driver: "ros2_canopen::MasterDriver"
+  package: "canopen_master_driver"
+  sync_period:  20000    # = 20 milliseconds -> =1/(0.02 sec)=  50 Hz
+  boot_timeout: 20000
+  start: true
+  start_all_nodes: true
+
+defaults:
+  driver: "ros2_canopen::Cia402Driver"
+  package: "canopen_402_driver"
+#  polling: true
+  period: 20
+  enable_lazy_load: true
+  diagnostics_enabled: true
+  heartbeat_producer: 1000
+  switching_state: 2
+     
+  tpdo: # TPDO needed statusword, actual velocity, actual position, mode of operation
+    1:
+      enabled: true
+      # cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6041, sub_index: 0 } # Statusword
+        - { index: 0x6061, sub_index: 0 } # Modes of operation display
+    2:
+      enabled: true
+      # cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x606B, sub_index: 0 } # Velocity demand value
+        - { index: 0x606C, sub_index: 0 } # Velocity actual value
+    3:
+      enabled: true
+      # cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6064, sub_index: 0 } # Position actual value
+        - { index: 0x30D3, sub_index: 1 } # Velocity actual value averaged
+    4:
+      enabled: false
+#      # cob_id: "auto"
+#      transmission: 0x01
+#      mapping:
+#        - { index: 0x6077, sub_index: 0 } # torque actual value
+
+  rpdo: # RPDO needed controlword, target position, target velocity, mode of operation
+    1:
+      enabled: true
+      # cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6040, sub_index: 0 } # controlword
+        - { index: 0x60FF, sub_index: 0 } # target velocity
+    2:
+      enabled: true
+      # cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x607A, sub_index: 0 } # target position
+        - { index: 0x607F, sub_index: 0 } # profile velocity
+    3:
+      enabled: true
+      # cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6083, sub_index: 0 } # profile acceleration
+        - { index: 0x6084, sub_index: 0 } # Profile deceleration
+    4:
+      enabled: true
+      # cob_id: "auto"
+      transmission: 0x01
+      mapping:
+        - { index: 0x6071, sub_index: 0 } # Target torque
+        - { index: 0x6060, sub_index: 0 } # Modes of operation 
+
+
+nodes: # Configurations for all slave nodes
+  br_shoulder_joint:
+    node_id: 1
+    dcf: "node_1.dcf"
+#    scale_pos_from_dev: 0.00132780754589594
+#    scale_pos_to_dev: 753.121190710849
+    scale_pos_from_dev: 0.076077768385461
+    scale_pos_to_dev: 13.1444444444444
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    position_mode: 8
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 8 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+
+    
+  br_elbow_joint:
+    node_id: 2
+    dcf: "node_2.dcf"
+#    scale_pos_from_dev: 0.00132780754589594
+#    scale_pos_to_dev: 753.121190710849
+    scale_pos_from_dev: 0.076077768385461
+    scale_pos_to_dev: 13.1444444444444
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    position_mode: 8
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 8 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+      
+          
+  br_wrist_joint:
+    node_id: 3
+    dcf: "node_3.dcf"
+    scale_pos_from_dev: 0.00116183160265895
+    scale_pos_to_dev: 860.70993224097
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    position_mode: 8
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 8 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+      
+          
+  fr_shoulder_joint:
+    node_id: 5
+    dcf: "node_5.dcf"
+#    scale_pos_from_dev: 0.00132780754589594
+#    scale_pos_to_dev: 753.121190710849
+    scale_pos_from_dev: 0.076077768385461
+    scale_pos_to_dev: 13.1444444444444
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    position_mode: 8
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 8 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+          
+  fr_elbow_joint:
+    node_id: 6
+    dcf: "node_6.dcf"
+#    scale_pos_from_dev: 0.00132780754589594
+#    scale_pos_to_dev: 753.121190710849
+    scale_pos_from_dev: 0.076077768385461
+    scale_pos_to_dev: 13.1444444444444
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    position_mode: 8
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 8 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+          
+  fr_wrist_joint:
+    node_id: 7
+    dcf: "node_7.dcf"
+#    scale_pos_from_dev: 0.00116183160265895
+#    scale_pos_to_dev: 860.70993224097
+    scale_pos_from_dev: 0.0665680473372782
+    scale_pos_to_dev: 15.0222222222222
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    position_mode: 8
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 8 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+          
+  bl_shoulder_joint:
+    node_id: 9
+    dcf: "node_9.dcf"
+#    scale_pos_from_dev: 0.00132780754589594
+#    scale_pos_to_dev: 753.121190710849
+    scale_pos_from_dev: 0.076077768385461
+    scale_pos_to_dev: 13.1444444444444
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    position_mode: 8
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 8 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+          
+  bl_elbow_joint:
+    node_id: 10
+    dcf: "node_10.dcf"
+#    scale_pos_from_dev: 0.00132780754589594
+#    scale_pos_to_dev: 753.121190710849
+    scale_pos_from_dev: 0.076077768385461
+    scale_pos_to_dev: 13.1444444444444
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    position_mode: 8
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 8 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+          
+  bl_wrist_joint:
+    node_id: 11
+    dcf: "node_11.dcf"
+#    scale_pos_from_dev: 0.00116183160265895
+#    scale_pos_to_dev: 860.70993224097
+    scale_pos_from_dev: 0.0665680473372782
+    scale_pos_to_dev: 15.0222222222222
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    position_mode: 8
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 8 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+          
+  fl_shoulder_joint:
+    node_id: 13
+    dcf: "node_13.dcf"
+#    scale_pos_from_dev: 0.00132780754589594
+#    scale_pos_to_dev: 753.121190710849
+    scale_pos_from_dev: 0.076077768385461
+    scale_pos_to_dev: 13.1444444444444
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    position_mode: 8
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 8 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+          
+  fl_elbow_joint:
+    node_id: 14
+    dcf: "node_14.dcf"
+#    scale_pos_from_dev: 0.00132780754589594
+#    scale_pos_to_dev: 753.121190710849
+    scale_pos_from_dev: 0.076077768385461
+    scale_pos_to_dev: 13.1444444444444
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    position_mode: 8
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 8 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+          
+  fl_wrist_joint:
+    node_id: 15
+    dcf: "node_15.dcf"
+#    scale_pos_from_dev: 0.00116183160265895
+#    scale_pos_to_dev: 860.70993224097
+    scale_pos_from_dev: 0.0665680473372782
+    scale_pos_to_dev: 15.0222222222222
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    position_mode: 8
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 8 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+          
+  fl_hand_joint:
+    node_id: 16
+    dcf: "node_16.dcf"
+#    scale_pos_from_dev: 0.00132780754589594
+#    scale_pos_to_dev: 753.121190710849
+    scale_pos_from_dev: 0.076077768385461
+    scale_pos_to_dev: 13.1444444444444
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    velocity_mode: 9
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 9 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+          
+  fr_hand_joint:
+    node_id: 8
+    dcf: "node_8.dcf"
+#    scale_pos_from_dev: 0.00132780754589594
+#    scale_pos_to_dev: 753.121190710849
+    scale_pos_from_dev: 0.076077768385461
+    scale_pos_to_dev: 13.1444444444444
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true 
+    velocity_mode: 9
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 9 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }       
+
+  bl_hand_joint:
+    node_id: 12
+    dcf: "node_12.dcf"
+#    scale_pos_from_dev: 0.00132780754589594
+#    scale_pos_to_dev: 753.121190710849
+    scale_pos_from_dev: 0.076077768385461
+    scale_pos_to_dev: 13.1444444444444
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true    
+    velocity_mode: 9
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 9 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+             
+  br_hand_joint:
+    node_id: 4
+    dcf: "node_4.dcf"
+#    scale_pos_from_dev: 0.00132780754589594
+#    scale_pos_to_dev: 753.121190710849
+    scale_pos_from_dev: 0.076077768385461
+    scale_pos_to_dev: 13.1444444444444
+    scale_vel_to_dev:   1075.8878
+    scale_vel_from_dev: 0.000929464949783797
+    skip_homing: true
+    velocity_mode: 9
+  
+    sdo:
+      - { index: 0x6060, sub_index: 0, value: 9 }        
+      - { index: 0x60C2, sub_index: 1, value: 20 }
+      - { index: 0x60C2, sub_index: 2, value: -3 }
+      

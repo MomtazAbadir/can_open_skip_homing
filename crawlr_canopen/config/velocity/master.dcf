@@ -1,0 +1,11 @@
+[Device]
+VendorName=DummyVendor
+ProductName=DummyMaster
+RevisionNo=1
+OrderNo=0000
+
+[MandatoryObjects]
+0x1000=0x00000000
+0x1001=0x00000000
+0x1F80=0x00000000
+

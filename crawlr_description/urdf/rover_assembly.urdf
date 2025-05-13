@@ -1,0 +1,1579 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="rover_assembly">
+<link name="world"/>
+  
+   <joint name="world_base" type="fixed">
+     <parent link="world"/>
+     <child link="base"/>
+     <origin rpy="0 0 0 " xyz="0.0 0.0 0.4"/>
+   </joint> 
+  <link
+    name="base">
+    <!-- <inertial> -->
+      <origin
+        xyz="-0.0050083 -2.0149E-05 -0.053451"
+        rpy="0 0 0" />
+      <mass
+        value="4.5781" />
+      <inertia
+        ixx="0.038674"
+        ixy="5.9776E-10"
+        ixz="2.4096E-06"
+        iyy="0.020715"
+        iyz="-1.8275E-09"
+        izz="0.054978" />
+    <!-- </inertial> -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.5 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="l_bogie_link">
+    <inertial>
+      <origin
+        xyz="3.3598E-06 -0.077499 0.016649"
+        rpy="0 0 0" />
+      <mass
+        value="2.8349" />
+      <inertia
+        ixx="0.0026191"
+        ixy="7.2171E-08"
+        ixz="4.7117E-08"
+        iyy="0.071285"
+        iyz="-2.6638E-06"
+        izz="0.07224" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/l_bogie_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/l_bogie_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l_base_joint"
+    type="fixed">
+    <origin
+      xyz="0 0.20935 -0.1481"
+      rpy="-1.5708 0 0" />
+    <parent
+      link="base" />
+    <child
+      link="l_bogie_link" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="fl_shoulder_link">
+    <inertial>
+      <origin
+        xyz="-0.010937 9.135E-05 0.059437"
+        rpy="0 0 0" />
+      <mass
+        value="1.9065" />
+      <inertia
+        ixx="0.0012855"
+        ixy="5.6505E-06"
+        ixz="-1.3808E-06"
+        iyy="0.0013531"
+        iyz="9.6822E-07"
+        izz="0.0014564" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/shoulder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_bogie_joint"
+    type="fixed">
+    <origin
+      xyz="0.3069 -0.06175 0.081"
+      rpy="1.5708 -1.5708 0" />
+    <parent
+      link="l_bogie_link" />
+    <child
+      link="fl_shoulder_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="fl_elbow_link">
+    <inertial>
+      <origin
+        xyz="0.11588 0.008896 0.029833"
+        rpy="0 0 0" />
+      <mass
+        value="2.4303" />
+      <inertia
+        ixx="0.0015624"
+        ixy="8.7889E-05"
+        ixz="1.313E-06"
+        iyy="0.0017596"
+        iyz="4.7085E-07"
+        izz="0.001894" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/elbow_link_br_fl.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.001 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/elbow_link_br_fl.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_shoulder_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="fl_shoulder_link" />
+    <child
+      link="fl_elbow_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1415"
+      upper="3.1415"
+      effort="100"
+      velocity="1300" />
+  </joint>
+  <link
+    name="fl_wrist_link">
+    <inertial>
+      <origin
+        xyz="0.106490210749518 0.000186854919416335 0.0418635367506254"
+        rpy="0 0 0" />
+      <mass
+        value="1.65982904359117" />
+      <inertia
+        ixx="0.000936027651453804"
+        ixy="-3.13677263034653E-06"
+        ixz="-1.37429223301743E-05"
+        iyy="0.00092500461674148"
+        iyz="-5.13687277242434E-07"
+        izz="0.00105495924116808" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wrist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wrist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_elbow_joint"
+    type="revolute">
+    <origin
+      xyz="0.14704 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="fl_elbow_link" />
+    <child
+      link="fl_wrist_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1415"
+      upper="3.1415"
+      effort="100"
+      velocity="1300" />
+  </joint>
+  <link
+    name="fl_hand_link">
+    <inertial>
+      <origin
+        xyz="0.034849 -0.00010605 -0.084186"
+        rpy="0 0 0" />
+      <mass
+        value="2.3674" />
+      <inertia
+        ixx="0.0012901"
+        ixy="1.2682E-06"
+        ixz="5.552E-05"
+        iyy="0.0013835"
+        iyz="-5.9325E-06"
+        izz="0.0011948" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/hand_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/hand_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_wrist_joint"
+    type="revolute">
+    <origin
+      xyz="0.14655 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="fl_wrist_link" />
+    <child
+      link="fl_hand_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1415"
+      upper="3.14"
+      effort="100"
+      velocity="1300" />
+  </joint>
+  <link
+    name="fl_wheel_link">
+    <inertial>
+      <origin
+        xyz="0.016725 -0.6138 1.4888"
+        rpy="0 0 0" />
+      <mass
+        value="3.5001" />
+      <inertia
+        ixx="0.028476"
+        ixy="1.4496E-14"
+        ixz="-2.7765E-11"
+        iyy="0.028476"
+        iyz="7.9856E-11"
+        izz="0.050581" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fl_hand_joint"
+    type="continuous">
+    <origin
+      xyz="0.16086 0 -0.111"
+      rpy="0 1.5707 0" />
+    <parent
+      link="fl_hand_link" />
+    <child
+      link="fl_wheel_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="0"
+      velocity="4000" />
+  </joint>
+  <link
+    name="bl_shoulder_link">
+    <inertial>
+      <origin
+        xyz="-0.010942 9.135E-05 0.059436"
+        rpy="0 0 0" />
+      <mass
+        value="1.9065" />
+      <inertia
+        ixx="0.0012855"
+        ixy="5.6504E-06"
+        ixz="-1.397E-06"
+        iyy="0.0013531"
+        iyz="9.6876E-07"
+        izz="0.0014564" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/shoulder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.5 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_bogie_joint"
+    type="fixed">
+    <origin
+      xyz="-0.3069 -0.06175 0.081"
+      rpy="0 -1.5707 1.5708" />
+    <parent
+      link="l_bogie_link" />
+    <child
+      link="bl_shoulder_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="bl_elbow_link">
+    <inertial>
+      <origin
+        xyz="0.1159 -0.0089217 0.046898"
+        rpy="0 0 0" />
+      <mass
+        value="2.4303" />
+      <inertia
+        ixx="0.0015632"
+        ixy="-8.7077E-05"
+        ixz="1.1741E-06"
+        iyy="0.0017587"
+        iyz="-7.1639E-07"
+        izz="0.001894" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/elbow_link_bl_fr.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.5 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/elbow_link_bl_fr.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_shoulder_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="bl_shoulder_link" />
+    <child
+      link="bl_elbow_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1415"
+      upper="3.14"
+      effort="100"
+      velocity="1300" />
+  </joint>
+  <link
+    name="bl_wrist_link">
+    <inertial>
+      <origin
+        xyz="0.11054 0.00018685 0.02956"
+        rpy="0 0 0" />
+      <mass
+        value="1.6598" />
+      <inertia
+        ixx="0.00093446"
+        ixy="-3.1747E-06"
+        ixz="-3.6605E-08"
+        iyy="0.000925"
+        iyz="-1.5589E-07"
+        izz="0.0010565" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wrist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.5 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wrist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_elbow_joint"
+    type="revolute">
+    <origin
+      xyz="0.14704 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="bl_elbow_link" />
+    <child
+      link="bl_wrist_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1415"
+      upper="3.1415"
+      effort="100"
+      velocity="1300" />
+  </joint>
+  <link
+    name="bl_hand_link">
+    <inertial>
+      <origin
+        xyz="0.034849 -0.00010605 -0.084186"
+        rpy="0 0 0" />
+      <mass
+        value="2.3674" />
+      <inertia
+        ixx="0.0012901"
+        ixy="1.2682E-06"
+        ixz="5.552E-05"
+        iyy="0.0013835"
+        iyz="-5.9325E-06"
+        izz="0.0011948" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/hand_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/hand_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_wrist_joint"
+    type="revolute">
+    <origin
+      xyz="0.1475 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="bl_wrist_link" />
+    <child
+      link="bl_hand_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1415"
+      upper="3.14"
+      effort="100"
+      velocity="1300" />
+  </joint>
+  <link
+    name="bl_wheel_link">
+    <inertial>
+      <origin
+        xyz="-7.8813E-11 9.7847E-11 -0.00089592"
+        rpy="0 0 0" />
+      <mass
+        value="3.5001" />
+      <inertia
+        ixx="0.028476"
+        ixy="1.3227E-14"
+        ixz="-7.0655E-11"
+        iyy="0.028476"
+        iyz="-4.3974E-11"
+        izz="0.050581" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bl_hand_joint"
+    type="continuous">
+    <origin
+      xyz="0.16086 0 -0.111"
+      rpy="0 1.5707 0" />
+    <parent
+      link="bl_hand_link" />
+    <child
+      link="bl_wheel_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="0"
+      velocity="4000" />
+  </joint>
+  <link
+    name="r_bogie_link">
+    <inertial>
+      <origin
+        xyz="-3.3638E-06 0.077499 0.016649"
+        rpy="0 0 0" />
+      <mass
+        value="2.8349" />
+      <inertia
+        ixx="0.0026191"
+        ixy="7.1709E-08"
+        ixz="-4.7077E-08"
+        iyy="0.071285"
+        iyz="2.6638E-06"
+        izz="0.07224" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/r_bogie_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/r_bogie_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="r_base_joint"
+    type="fixed">
+    <origin
+      xyz="0 -0.20935 -0.1481"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base" />
+    <child
+      link="r_bogie_link" />
+    <axis
+      xyz="0 0 0" />
+    <limit
+      lower="-3.1415"
+      upper="3.1415"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="fr_shoulder_link">
+    <inertial>
+      <origin
+        xyz="-0.010937 9.135E-05 0.059437"
+        rpy="0 0 0" />
+      <mass
+        value="1.9065" />
+      <inertia
+        ixx="0.0012855"
+        ixy="5.6505E-06"
+        ixz="-1.3808E-06"
+        iyy="0.0013531"
+        iyz="9.6822E-07"
+        izz="0.0014564" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/shoulder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.75294 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_bogie_joint"
+    type="fixed">
+    <origin
+      xyz="0.3069 0.06175 0.081"
+      rpy="-1.5708 -1.5708 0" />
+    <parent
+      link="r_bogie_link" />
+    <child
+      link="fr_shoulder_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="fr_elbow_link">
+    <inertial>
+      <origin
+        xyz="0.11591 -0.0089217 0.046914"
+        rpy="0 0 0" />
+      <mass
+        value="2.4303" />
+      <inertia
+        ixx="0.0015632"
+        ixy="-8.7077E-05"
+        ixz="1.2056E-06"
+        iyy="0.0017587"
+        iyz="-7.081E-07"
+        izz="0.001894" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/elbow_link_bl_fr.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.75294 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/elbow_link_bl_fr.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_shoulder_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="fr_shoulder_link" />
+    <child
+      link="fr_elbow_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.1415"
+      upper="3.1415"
+      effort="100"
+      velocity="1300" />
+  </joint>
+  <link
+    name="fr_wrist_link">
+    <inertial>
+      <origin
+        xyz="0.11054 0.00018685 0.029539"
+        rpy="0 0 0" />
+      <mass
+        value="1.6598" />
+      <inertia
+        ixx="0.00093446"
+        ixy="-3.1748E-06"
+        ixz="-1.336E-08"
+        iyy="0.000925"
+        iyz="-1.5528E-07"
+        izz="0.0010565" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wrist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.75294 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wrist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_elbow_joint"
+    type="revolute">
+    <origin
+      xyz="0.14704 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="fr_elbow_link" />
+    <child
+      link="fr_wrist_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1415"
+      upper="3.1415"
+      effort="100"
+      velocity="1300" />
+  </joint>
+  <link
+    name="fr_hand_link">
+    <inertial>
+      <origin
+        xyz="0.034849 -0.00010605 -0.084186"
+        rpy="0 0 0" />
+      <mass
+        value="2.3674" />
+      <inertia
+        ixx="0.0012901"
+        ixy="1.2682E-06"
+        ixz="5.552E-05"
+        iyy="0.0013835"
+        iyz="-5.9325E-06"
+        izz="0.0011948" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/hand_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.75294 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/hand_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_wrist_joint"
+    type="revolute">
+    <origin
+      xyz="0.1475 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="fr_wrist_link" />
+    <child
+      link="fr_hand_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1415"
+      upper="3.14"
+      effort="100"
+      velocity="1300" />
+  </joint>
+  <link
+    name="fr_wheel_link">
+    <inertial>
+      <origin
+        xyz="1.1459E-10 5.62E-11 -0.0026719"
+        rpy="0 0 0" />
+      <mass
+        value="3.5001" />
+      <inertia
+        ixx="0.028476"
+        ixy="1.4518E-14"
+        ixz="-2.7765E-11"
+        iyy="0.028476"
+        iyz="7.9856E-11"
+        izz="0.050581" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fr_hand_joint"
+    type="continuous">
+    <origin
+      xyz="0.16086 0 -0.111"
+      rpy="0 1.5707 0" />
+    <parent
+      link="fr_hand_link" />
+    <child
+      link="fr_wheel_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="0"
+      velocity="4000" />
+  </joint>
+  <link
+    name="br_shoulder_link">
+    <inertial>
+      <origin
+        xyz="-0.010931 9.135E-05 0.059438"
+        rpy="0 0 0" />
+      <mass
+        value="1.9065" />
+      <inertia
+        ixx="0.0012855"
+        ixy="5.6506E-06"
+        ixz="-1.3645E-06"
+        iyy="0.0013531"
+        iyz="9.6769E-07"
+        izz="0.0014564" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/shoulder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/shoulder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_bogie_joint"
+    type="fixed">
+    <origin
+      xyz="-0.3069 0.06175 0.081"
+      rpy="-3.1416 -1.5707 1.5708" />
+    <parent
+      link="r_bogie_link" />
+    <child
+      link="br_shoulder_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="br_elbow_link">
+    <inertial>
+      <origin
+        xyz="0.11588 0.008896 0.046547"
+        rpy="0 0 0" />
+      <mass
+        value="2.4303" />
+      <inertia
+        ixx="0.0015624"
+        ixy="8.7889E-05"
+        ixz="1.3446E-06"
+        iyy="0.0017596"
+        iyz="4.6248E-07"
+        izz="0.001894" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/elbow_link_br_fl.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.002 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/elbow_link_br_fl.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_shoulder_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="br_shoulder_link" />
+    <child
+      link="br_elbow_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.1415"
+      upper="3.1415"
+      effort="100"
+      velocity="1300" />
+  </joint>
+  <link
+    name="br_wrist_link">
+    <inertial>
+      <origin
+        xyz="0.11054 0.00018685 0.02956"
+        rpy="0 0 0" />
+      <mass
+        value="1.6598" />
+      <inertia
+        ixx="0.00093446"
+        ixy="-3.1747E-06"
+        ixz="-3.6606E-08"
+        iyy="0.000925"
+        iyz="-1.5589E-07"
+        izz="0.0010565" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wrist_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wrist_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_elbow_joint"
+    type="revolute">
+    <origin
+      xyz="0.14704 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="br_elbow_link" />
+    <child
+      link="br_wrist_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1415"
+      upper="3.1415"
+      effort="100"
+      velocity="1300" />
+  </joint>
+  <link
+    name="br_hand_link">
+    <inertial>
+      <origin
+        xyz="0.034849 -0.00010605 -0.084186"
+        rpy="0 0 0" />
+      <mass
+        value="2.3674" />
+      <inertia
+        ixx="0.0012901"
+        ixy="1.2682E-06"
+        ixz="5.552E-05"
+        iyy="0.0013835"
+        iyz="-5.9325E-06"
+        izz="0.0011948" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/hand_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/hand_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_wrist_joint"
+    type="revolute">
+    <origin
+      xyz="0.1475 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="br_wrist_link" />
+    <child
+      link="br_hand_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.1415"
+      upper="3.14"
+      effort="100"
+      velocity="1300" />
+  </joint>
+  <link
+    name="br_wheel_link">
+    <inertial>
+      <origin
+        xyz="-5.62E-11 1.1459E-10 -0.0026719"
+        rpy="0 0 0" />
+      <mass
+        value="3.5001" />
+      <inertia
+        ixx="0.028476"
+        ixy="-1.4514E-14"
+        ixz="-7.9856E-11"
+        iyy="0.028476"
+        iyz="-2.7765E-11"
+        izz="0.050581" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://crawlr_description/meshes/wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="br_hand_joint"
+    type="continuous">
+    <origin
+      xyz="0.16086 0 -0.111"
+      rpy="0 1.5707 0" />
+    <parent
+      link="br_hand_link" />
+    <child
+      link="br_wheel_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      effort="0"
+      velocity="4000" />
+  </joint>
+  
+  
+  
+  
+  
+  <transmission name="fl_trans_shoulder_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="fl_shoulder_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="fl_shoulder_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    
+    
+    <transmission name="fl_trans_elbow_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="fl_elbow_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="fl_elbow_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    
+    
+    <transmission name="fl_trans_wrist_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="fl_wrist_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="fl_wrist_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    
+    
+    
+    <transmission name="fl_trans_hand_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="fl_hand_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="fl_hand_joint_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+  <transmission name="fr_trans_shoulder_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="fr_shoulder_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="fr_shoulder_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    
+    
+    <transmission name="fr_trans_elbow_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="fr_elbow_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="fr_elbow_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    
+    
+    
+    <transmission name="fr_trans_wrist_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="fr_wrist_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="fr_wrist_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    
+    
+    
+    <transmission name="fr_trans_hand_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="fr_hand_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="fr_hand_joint_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+
+
+    
+    <transmission name="bl_trans_shoulder_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="bl_shoulder_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="bl_shoulder_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    
+    
+    
+    
+    
+    <transmission name="bl_trans_elbow_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="bl_elbow_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="bl_elbow_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    
+    
+    <transmission name="bl_trans_wrist_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="bl_wrist_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="bl_wrist_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    
+    
+    <transmission name="bl_trans_hand_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="bl_hand_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="bl_hand_joint_motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+  
+    <transmission name="br_trans_shoulder_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="br_shoulder_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="br_shoulder_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    <transmission name="br_trans_elbow_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="br_elbow_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="br_elbow_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    
+    <transmission name="br_trans_wrist_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="br_wrist_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="br_wrist_joint_motor">
+          <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    
+    
+    <transmission name="br_trans_hand_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="br_hand_joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="br_hand_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    
+    
+    
+    
+    <!-- <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo> -->
+    
+</robot>
