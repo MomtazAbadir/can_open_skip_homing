@@ -29,18 +29,18 @@ wheel_controller:
 leg_position_controller:
   ros__parameters:
     joints:
-      - bl_shoulder_joint
-      - bl_elbow_joint
-      - bl_wrist_joint
-      - br_shoulder_joint
-      - br_elbow_joint
-      - br_wrist_joint
       - fr_shoulder_joint
       - fr_elbow_joint
       - fr_wrist_joint
       - fl_shoulder_joint
       - fl_elbow_joint
-      - fl_wrist_joint  
+      - fl_wrist_joint 
+      - br_shoulder_joint
+      - br_elbow_joint
+      - br_wrist_joint
+      - bl_shoulder_joint
+      - bl_elbow_joint
+      - bl_wrist_joint
     command_interfaces:
       - position
     state_interfaces:
